@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from urllib.parse import urlparse
+from urlparse import urljoin
 
 from django.contrib.syndication.views import Feed
 
@@ -39,5 +39,5 @@ class BlogPageFeed(Feed):
     def item_enclosure_url(self, item):
         if item.header_image:
             site = Site.find_for_request(self.request)
-            return urlparse(site.root_url, item.header_image.file.url)
+            return urljoin(site.root_url, item.header_image.file.url)
         return None
