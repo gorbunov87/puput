@@ -31,14 +31,13 @@ class EntryPageUpdateCommentsView(View):
     def post(self, request, entry_page_id, *args, **kwargs):
         try:
             entry_page = EntryPage.objects.get(pk=entry_page_id)
-            blog_page = entry_page.blog_page
-            disqus_client = DisqusAPI(secret_key=blog_page.disqus_api_secret)
+            disqus_client = DisqusAPI(secret_key=settings.DISQUS_API_KEY)
             try:
-                thread = disqus_client.threads.details(forum=blog_page.disqus_shortname,
+                thread = disqus_client.threads.details(forum=settings.DISQUS_WEBSITE_SHORTNAME,
                                                        thread='ident:{}'.format(entry_page_id))
                 entry_page.num_comments = thread['posts']
                 entry_page.save()
-                return HttpResponse()
+                return HttpResponse('')
             except APIError:
                 raise Http404
         except EntryPage.DoesNotExist:
