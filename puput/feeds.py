@@ -2,7 +2,6 @@
 from six.moves import urllib_parse
 
 from django.contrib.syndication.views import Feed
-from django.core.urlresolvers import reverse
 
 from wagtail.wagtailcore.models import Site
 
@@ -36,15 +35,6 @@ class BlogPageFeed(Feed):
 
     def item_pubdate(self, item):
         return item.date
-
-    def item_link(self, item):
-        return reverse('entry_page_serve', kwargs={
-            'blog_slug': self.blog_page.slug,
-            'year': item.date.strftime('%Y'),
-            'month': item.date.strftime('%m'),
-            'day': item.date.strftime('%d'),
-            'slug': item.slug
-        })
 
     def item_enclosure_url(self, item):
         if item.header_image:
