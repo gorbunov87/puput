@@ -24,7 +24,7 @@ from .managers import TagManager, CategoryManager
 
 class BlogPage(BlogRoutes, Page):
     description = models.CharField(verbose_name=_('Description'), max_length=255, blank=True,
-                                   help_text=_("The blog description that will appear under the title."))
+                                   help_text=_("The page description that will appear under the title."))
     header_image = models.ForeignKey('wagtailimages.Image', verbose_name=_('Header image'), null=True, blank=True,
                                      on_delete=models.SET_NULL, related_name='+')
 
@@ -54,18 +54,18 @@ class BlogPage(BlogRoutes, Page):
             FieldPanel('display_popular_entries'),
             FieldPanel('display_last_entries'),
             FieldPanel('display_archive'),
-        ], heading=_("Widgets")),
+        ], heading="Widgets"),
         MultiFieldPanel([
             FieldPanel('num_entries_page'),
             FieldPanel('num_last_entries'),
             FieldPanel('num_popular_entries'),
             FieldPanel('num_tags_entry_header'),
-        ], heading=_("Parameters")),
+        ], heading="Parameters"),
         MultiFieldPanel([
             FieldPanel('display_comments'),
             FieldPanel('disqus_api_secret'),
             FieldPanel('disqus_shortname'),
-        ], heading=_("Comments")),
+        ], heading="Comments"),
     ]
     subpage_types = ['puput.EntryPage']
 
@@ -87,11 +87,10 @@ class BlogPage(BlogRoutes, Page):
 @register_snippet
 @python_2_unicode_compatible
 class Category(models.Model):
-    name = models.CharField(max_length=80, unique=True, verbose_name=_('Category name'))
+    name = models.CharField(max_length=80, unique=True, verbose_name=_('Category Name'))
     slug = models.SlugField(unique=True, max_length=80)
-    parent = models.ForeignKey('self', blank=True, null=True, related_name="children",
-                               verbose_name=_('Parent category'))
-    description = models.CharField(max_length=500, blank=True, verbose_name=_('Description'))
+    parent = models.ForeignKey('self', blank=True, null=True, related_name="children")
+    description = models.CharField(max_length=500, blank=True)
 
     objects = CategoryManager()
 
@@ -113,9 +112,9 @@ class Category(models.Model):
         if self.parent:
             parent = self.parent
             if self.parent == self:
-                raise ValidationError(_('Parent category cannot be self.'))
+                raise ValidationError('Parent category cannot be self.')
             if parent.parent and parent.parent == self:
-                raise ValidationError(_('Cannot have circular Parents.'))
+                raise ValidationError('Cannot have circular Parents.')
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -156,8 +155,8 @@ class EntryPage(Page):
                                      on_delete=models.SET_NULL, related_name='+', )
     categories = models.ManyToManyField(Category, through=CategoryEntryPage, blank=True)
     excerpt = RichTextField(verbose_name=_('excerpt'), blank=True,
-                            help_text=_("Entry excerpt to be displayed on entries list. "
-                                        "If this field is not filled, a truncate version of body text will be used."))
+                            help_text=_("Used to display on puput pages list. If this field is not filled, "
+                                        "a truncate version of body text will be used."))
     num_comments = models.IntegerField(default=0, editable=False)
 
     search_fields = Page.search_fields + (
@@ -171,12 +170,12 @@ class EntryPage(Page):
             ImageChooserPanel('header_image'),
             FieldPanel('body', classname="full"),
             FieldPanel('excerpt', classname="full"),
-        ], heading=_("Content")),
+        ], heading="Content"),
         MultiFieldPanel([
             FieldPanel('tags'),
             InlinePanel('entry_categories', label=_("Categories")),
             InlinePanel('related_entrypage_from', label=_("Related Entries")),
-        ], heading=_("Metadata")),
+        ], heading="Metadata"),
     ]
 
     settings_panels = Page.settings_panels + [
