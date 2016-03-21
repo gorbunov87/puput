@@ -38,7 +38,6 @@ Contents:
    comments
    extending
    importers
-   sites
    settings
    changelog
    authors
