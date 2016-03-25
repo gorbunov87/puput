@@ -12,7 +12,4 @@ $(document).ready(function () {
             $(this).closest('.parent').addClass('active');
         }
     });
-    $('code').wrap('<pre></pre>');
-    $('code').addClass('prettyprint');
-    prettyPrint();
 });
