@@ -7,9 +7,8 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils import six
 
-from wagtail.wagtailcore.models import Page, PageBase
+from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsnippets.models import register_snippet
@@ -155,7 +154,7 @@ class EntryPageRelated(models.Model):
     entrypage_to = ParentalKey('EntryPage', verbose_name=_("Entry"), related_name='related_entrypage_to')
 
 
-class EntryPage(six.with_metaclass(PageBase, Entry, Page)):
+class EntryPage(Page, Entry):
     # Search
     search_fields = Page.search_fields + [
         index.SearchField('body'),
