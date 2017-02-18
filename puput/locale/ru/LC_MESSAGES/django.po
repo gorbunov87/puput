@@ -7,17 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: puput\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-18 17:44+0100\n"
+"POT-Creation-Date: 2017-01-24 14:50+0700\n"
 "PO-Revision-Date: 2017-01-24 15:08+0700\n"
-"Last-Translator: Basil Shubin <basil.shubin@gmail.com>\n"
-"Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Last-Translator: Basil Shubin <basil.shubin@gmail.com>\n"
+"Language-Team: \n"
 
 #: abstracts.py:16
 msgid "body"
@@ -45,7 +43,7 @@ msgstr ""
 msgid "Content"
 msgstr "Содержимое"
 
-#: abstracts.py:36 models.py:134 templates/puput/base.html:71
+#: abstracts.py:36 models.py:129 templates/puput/base.html:71
 msgid "Categories"
 msgstr "Рубрики"
 
@@ -57,7 +55,7 @@ msgstr "Связанные записи"
 msgid "Metadata"
 msgstr "Мета данные"
 
-#: models.py:29 models.py:111
+#: models.py:29 models.py:106
 msgid "Description"
 msgstr "Описание"
 
@@ -105,55 +103,47 @@ msgstr ""
 msgid "Tags limit entry header"
 msgstr ""
 
-#: models.py:49
-msgid "Use short description in feeds"
-msgstr ""
-
-#: models.py:64
+#: models.py:62
 msgid "Widgets"
 msgstr "Виджеты"
 
-#: models.py:70
+#: models.py:68
 msgid "Parameters"
 msgstr "Параметры"
 
-#: models.py:75
+#: models.py:73
 msgid "Comments"
 msgstr "Комментарии"
 
-#: models.py:78
-msgid "Feeds"
-msgstr ""
-
-#: models.py:101
+#: models.py:96
 msgid "Blog"
 msgstr "Блог"
 
-#: models.py:107
+#: models.py:102
 msgid "Category name"
 msgstr "Название рубрики"
 
-#: models.py:110
+#: models.py:105
 msgid "Parent category"
 msgstr "Родительская рубрика"
 
-#: models.py:122
+#: models.py:117
 msgid "Parent category cannot be self."
 msgstr "Рубрика не может быть унаследована от самой себя."
 
-#: models.py:124
+#: models.py:119
 msgid "Cannot have circular Parents."
 msgstr ""
 
-#: models.py:133 models.py:138
+#: models.py:128 models.py:133
 msgid "Category"
 msgstr "Рубрика"
 
-#: models.py:158 models.py:159 models.py:202
+#: models.py:153 models.py:154 models.py:197
 msgid "Entry"
 msgstr "Запись"
 
-#: models.py:203
+#: models.py:198
 msgid "Entries"
 msgstr "Записи"
 
@@ -180,10 +170,6 @@ msgstr "поиск"
 #: templates/el_pagination/show_more.html:5
 msgid "more"
 msgstr "далее"
-
-#: templates/puput/base.html:45
-msgid "Feed RSS"
-msgstr ""
 
 #: templates/puput/base.html:50
 msgid "Search"
@@ -215,7 +201,7 @@ msgid "Continue reading"
 msgstr "Читать далее"
 
 #: templates/puput/blog_page.html:52
-msgid "No results found."
+msgid "No results founds."
 msgstr "Ничего не найдено."
 
 #: templates/puput/tags/archives_list.html:23
